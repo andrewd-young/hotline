@@ -1,6 +1,3 @@
-import React from 'react'
-import { motion } from 'framer-motion'
-
 interface ListingCardProps {
   title: string
   price: string

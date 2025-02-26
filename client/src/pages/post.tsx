@@ -1,4 +1,3 @@
-import { div } from 'framer-motion/client'
 import React, { useState, useRef } from 'react'
 import Header from '../components/Header'
 import { addDoc, collection } from 'firebase/firestore';
@@ -18,7 +17,7 @@ const Post = () => {
     const files = event.target.files;
     if (!files) return;
 
-    const newImages: string[] = [];
+    // const newImages: string[] = [];
     Array.from(files).forEach(file => {
       const reader = new FileReader();
       reader.onload = (e) => {
@@ -32,7 +31,7 @@ const Post = () => {
 
   const handlePost = async () => {
     const listingRef = collection(db, 'listings');
-    const res = await addDoc(listingRef, {
+    await addDoc(listingRef, {
       hostName,
       title,
       about,

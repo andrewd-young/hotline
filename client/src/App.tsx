@@ -1,4 +1,3 @@
-import React, { useState } from 'react'
 import OpeningImage from './components/OpeningImage'
 import ListingCard from './components/ListingCard'
 import Header from './components/Header'
@@ -6,7 +5,6 @@ import im2 from './assets/images/1.jpg'
 
 const App = () => {
 
-  const [customerOrVendor, setCustomerOrVendor] = useState<boolean>(false)
 
   return (
     <div>
