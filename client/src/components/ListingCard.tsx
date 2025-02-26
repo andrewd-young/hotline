@@ -1,9 +1,12 @@
+import { a } from "framer-motion/client"
+
 interface ListingCardProps {
   title: string
   price: string
   imageUrl: string
   isNew?: boolean
   location: string
+  id: string
 }
 
 const ListingCard = ({
@@ -11,9 +14,11 @@ const ListingCard = ({
   price,
   imageUrl,
   isNew = false,
-  location
+  location,
+  id
 }: ListingCardProps) => {
   return (
+    <a href={`/offering/${id}`}>
     <div className="max-w-sm">
       {/* Image Container */}
       <div className="aspect-[3/4] mb-4">
@@ -40,6 +45,7 @@ const ListingCard = ({
         </div>
       </div>
     </div>
+    </a>
   )
 }
 

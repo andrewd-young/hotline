@@ -2,9 +2,35 @@ import OpeningImage from './components/OpeningImage'
 import ListingCard from './components/ListingCard'
 import Header from './components/Header'
 import im2 from './assets/images/1.jpg'
+import { useEffect, useState } from 'react'
+import { collection, getDocs, limit, orderBy, query } from 'firebase/firestore'
+import { db } from './config/firebase'
 
 const App = () => {
 
+  const [recentlistings, setRecentlistings] = useState<any[]>([])
+
+  useEffect(() => {
+    const fetchRecentListings = async () => {
+      const querySnapshot = await getDocs(
+        query(
+          collection(db, 'listings'),
+          orderBy('timestamp', 'desc'),
+          limit(6)
+        )
+      )
+      const listings = querySnapshot.docs.map((doc) => ({
+        id: doc.id,
+        data: doc.data(),
+      }))
+      setRecentlistings(listings)
+    }
+    fetchRecentListings()
+  }, [])
+
+  useEffect(() => {
+    console.log(recentlistings)
+  }, [recentlistings])
 
   return (
     <div>
@@ -16,7 +42,20 @@ const App = () => {
         <div className='text-2xl font-bold mx-10 my-10'>Recently Listed</div>
         <div className='mx-10'>
           <div className='grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto'>
-            <ListingCard
+            {recentlistings.map((listing) => (
+              <ListingCard
+                id={listing.id}
+                title={listing.data.title}
+                price={listing.data.price}
+                imageUrl={"https://images.squarespace-cdn.com/content/v1/587553a42e69cf0d97bd789e/1647533205556-2LW64ZRGF1A1FC1BWDQL/image-asset.jpeg?format=750w"}
+                isNew={listing.data.isNew}
+                location={listing.data.location}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
+            {/* <ListingCard
               title="Georgia Gingham Short Sleeve Mini Dress"
               price="239"
               imageUrl="https://images.squarespace-cdn.com/content/v1/587553a42e69cf0d97bd789e/1647533205556-2LW64ZRGF1A1FC1BWDQL/image-asset.jpeg?format=750w"
@@ -35,10 +74,7 @@ const App = () => {
               title="Georgia Gingham Short Sleeve Mini Dress"
               price="239"
               imageUrl="https://images.squarespace-cdn.com/content/v1/587553a42e69cf0d97bd789e/1647533205556-2LW64ZRGF1A1FC1BWDQL/image-asset.jpeg?format=750w"
-              isNew={true} location={'New York'} />
-          </div>
-        </div>
-      </div>
+              isNew={true} location={'New York'} /> */}
 
       {/* offering */}
       <div>

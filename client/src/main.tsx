@@ -5,7 +5,7 @@ import App from './App.tsx'
 import { BrowserRouter, Route, Routes } from 'react-router'
 import Listings from './pages/Listings.tsx'
 import Post from './pages/Post.tsx'
-import Offering from './pages/Offerings.tsx'
+import Offering from './pages/Offering.tsx'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -14,7 +14,7 @@ createRoot(document.getElementById('root')!).render(
       <Route path="/" element={<App />} />
       <Route path="/listings" element={<Listings />} />
       <Route path="/post" element={<Post />} />
-      <Route path="/offering" element={<Offering />} />
+      <Route path="/offering/:id" element={<Offering />} />
     </Routes>
     </BrowserRouter>
   </StrictMode>,
