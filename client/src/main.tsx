@@ -3,9 +3,9 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.tsx'
 import { BrowserRouter, Route, Routes } from 'react-router'
-import Listings from './pages/listings.tsx'
-import Post from './pages/post.tsx'
-import Offering from './pages/offering.tsx'
+import Listings from './pages/Listings.tsx'
+import Post from './pages/Post.tsx'
+import Offering from './pages/Offerings.tsx'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
