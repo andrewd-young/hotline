@@ -4,8 +4,19 @@ import ListingCard from '../components/ListingCard'
 import { collection, getDocs } from 'firebase/firestore'
 import { db } from '../config/firebase'
 
-const listings = () => {
-  const [listings, setListings] = useState<any[]>([]);
+interface Listing {
+  id: string;
+  data: {
+    title: string;
+    price: number;
+    isNew: boolean;
+    location: string;
+    timestamp: Date;
+  }
+}
+
+const Listings = () => {
+  const [listings, setListings] = useState<Listing[]>([]);
 
   useEffect(() => {
     const fetchListings = async () => {
@@ -13,7 +24,13 @@ const listings = () => {
       const snapshot = await getDocs(listingsRef);
       const listingsList = snapshot.docs.map((doc) => ({
         id: doc.id,
-        data: doc.data(),
+        data: {
+          title: doc.data().title as string,
+          price: doc.data().price as number,
+          isNew: doc.data().isNew as boolean,
+          location: doc.data().location as string,
+          timestamp: doc.data().timestamp as Date,
+        }
       }));
       setListings(listingsList);
     }
@@ -41,4 +58,4 @@ const listings = () => {
   )
 }
 
-export default listings
+export default Listings

@@ -1,8 +1,6 @@
-import { a } from "framer-motion/client"
-
 interface ListingCardProps {
   title: string
-  price: string
+  price: number
   imageUrl: string
   isNew?: boolean
   location: string

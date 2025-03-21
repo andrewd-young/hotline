@@ -13,7 +13,7 @@ interface ListingData {
   imageUrl: string
 }
 
-const listing = () => {
+const Listing = () => {
   const { id } = useParams()
   const [listing, setListing] = useState<ListingData | null>(null)
   const [loading, setLoading] = useState(true)
@@ -100,4 +100,4 @@ const listing = () => {
   )
 }
 
-export default listing 
+export default Listing 
