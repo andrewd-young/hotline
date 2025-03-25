@@ -1,27 +1,76 @@
-import { Link } from 'react-router'
+import { Link } from 'react-router-dom'
+import { useState, useEffect } from 'react'
 
-const Header = () => {
+interface HeaderProps {
+  isTransparent?: boolean
+}
+
+const Header = ({ isTransparent = false }: HeaderProps) => {
+  const [scrolled, setScrolled] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const isScrolled = window.scrollY > 50
+      setScrolled(isScrolled)
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  const bgColor = isTransparent 
+    ? scrolled ? 'bg-white' : 'bg-transparent'
+    : 'bg-white'
+
+  const textColor = isTransparent
+    ? scrolled ? 'text-black' : 'text-white'
+    : 'text-black'
+
   return (
-    <header className="bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-10 ">
+    <header className={`fixed w-full top-0 z-50 transition-all duration-300 ${bgColor}`}>
+      <div className="max-w-[1400px] mx-auto px-8">
+        <div className="flex justify-between items-center h-20">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <Link to="/" className="text-2xl font-bold ">
-              Hotline
+            <Link 
+              to="/" 
+              className={`text-2xl font-light transition-colors ${textColor}`}
+            >
+              HOTLINE
             </Link>
           </div>
 
           {/* Navigation */}
           <nav className="flex space-x-8">
-            <Link to="/post" className="text-gray-700 hover:text-blue-600 px-3 py-2">
+            <Link 
+              to="/" 
+              className={`font-light hover:opacity-75 transition-all ${textColor}`}
+            >
+              Home
+            </Link>
+            <Link 
+              to="/post" 
+              className={`font-light hover:opacity-75 transition-all ${textColor}`}
+            >
               Post
             </Link>
-            <Link to="/listings" className="text-gray-700 hover:text-blue-600 px-3 py-2">
-              Find Services
+            <Link 
+              to="/listings" 
+              className={`font-light hover:opacity-75 transition-all ${textColor}`}
+            >
+              Browse Services
             </Link>
-            <Link to="/login" className="text-gray-700 hover:text-blue-600 px-3 py-2">
-              Login
+            <Link 
+              to="/post" 
+              className={`font-light hover:opacity-75 transition-all ${textColor}`}
+            >
+              Become a Hotliner
+            </Link>
+            <Link 
+              to="/login" 
+              className={`font-light hover:opacity-75 transition-all ${textColor}`}
+            >
+              Log in
             </Link>
           </nav>
         </div>

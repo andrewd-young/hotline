@@ -1,5 +1,4 @@
 import React, { useState, useRef } from 'react'
-import Header from '../components/Header'
 import { addDoc, collection } from 'firebase/firestore';
 import { db } from '../config/firebase';
 
@@ -47,9 +46,8 @@ const Post = () => {
   };
 
   return (
-    <div className="">
-      <Header />
-      <div className="max-w-4xl mx-auto p-6">
+    <div className="pt-32 pb-8">
+      <div className="max-w-4xl mx-auto px-8">
         <h1 className="text-2xl font-bold mb-6">Make a Listing</h1>
 
         {/* Image Upload Section */}

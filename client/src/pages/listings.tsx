@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import Header from '../components/Header'
 import ListingCard from '../components/ListingCard'
 import { collection, getDocs } from 'firebase/firestore'
 import { db } from '../config/firebase'
@@ -37,11 +36,10 @@ const Listings = () => {
     fetchListings();
   }, []);
   return (
-    <div>
-      <Header />
-      <div className='text-2xl font-bold max-w-6xl mx-auto px-10 my-10'>Listings</div>
-      <div className='px-10'>
-        <div className='grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto'>
+    <div className="pt-8">
+      <div className='text-2xl font-bold max-w-[1400px] mx-auto px-8 mb-8'>Listings</div>
+      <div className='max-w-[1400px] mx-auto px-8'>
+        <div className='grid grid-cols-1 md:grid-cols-3 gap-6'>
           {listings.map((listing) => (
             <ListingCard 
               id={listing.id}
@@ -50,7 +48,8 @@ const Listings = () => {
               price={listing.data.price}
               imageUrl="https://images.squarespace-cdn.com/content/v1/587553a42e69cf0d97bd789e/1647533205556-2LW64ZRGF1A1FC1BWDQL/image-asset.jpeg?format=750w"
               isNew={listing.data.isNew}
-              location={listing.data.location}           />
+              location={listing.data.location}
+            />
           ))}
         </div>
       </div>
