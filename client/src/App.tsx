@@ -1,5 +1,5 @@
 import Header from './components/Header'
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, useNavigate } from 'react-router-dom'
 import Post from './pages/Post.tsx'
 import Offering from './pages/Offering.tsx'
 import Login from './pages/Login'
@@ -10,29 +10,11 @@ import Hero from './components/Hero'
 import { motion } from 'framer-motion'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar as farStar } from '@fortawesome/free-regular-svg-icons'
+import Profile from './pages/Profile'
+import { hotliners } from './data/sampleData'
 
 const App = () => {
-  // Dummy data from Explore page - this should eventually come from your backend
-  const hotliners = [
-    {
-      id: '1',
-      name: 'Sarah Johnson',
-      category: 'Hair',
-      rating: 4.8,
-      imageUrl: 'https://images.unsplash.com/photo-1556229165-8aa0ceaa93a7?q=80&w=2687&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-      location: 'Northeastern University',
-      price: 45
-    },
-    {
-      id: '2',
-      name: 'Emily Davis',
-      category: 'Nails',
-      rating: 4.5,
-      imageUrl: 'https://plus.unsplash.com/premium_photo-1703343320234-4c1a75b3ff13?q=80&w=2574&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-      location: 'Northeastern University',
-      price: 30
-    },
-  ]
+  const navigate = useNavigate()
 
   return (
     <div className="min-h-screen bg-[#D7DOC4]">
@@ -72,7 +54,10 @@ const App = () => {
                         animate={{ opacity: 1, y: 0 }}
                         className="bg-white rounded-none overflow-hidden shadow-sm hover:shadow-md transition-shadow"
                       >
-                        <div className="aspect-square">
+                        <div 
+                          className="aspect-square cursor-pointer" 
+                          onClick={() => navigate(`/profile/${hotliner.id}`)}
+                        >
                           <img
                             src={hotliner.imageUrl}
                             alt={hotliner.name}
@@ -89,7 +74,7 @@ const App = () => {
                           <p className="text-gray-600 text-sm mt-1">{hotliner.location}</p>
                           <div className="flex justify-between items-center mt-4">
                             <span className="font-semibold">${hotliner.price}</span>
-                            <button className="px-4 py-2 bg-gray-200 text-black rounded-none hover:bg-gray-300 cursor-pointer">
+                            <button onClick={() => navigate(`/profile/${hotliner.id}`)} className="px-4 py-2 bg-gray-200 text-black rounded-none hover:bg-gray-300 cursor-pointer">
                               Book Now
                             </button>
                           </div>
@@ -140,6 +125,14 @@ const App = () => {
         } />
         <Route path="/search" element={
           <Search />
+        } />
+        <Route path="/profile/:id" element={
+          <>
+            <Header />
+            <div className="pt-20">
+              <Profile />
+            </div>
+          </>
         } />
       </Routes>
     </div>
