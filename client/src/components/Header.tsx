@@ -34,7 +34,7 @@ const Header = ({ isTransparent = false }: HeaderProps) => {
           <div className="flex-shrink-0">
             <Link 
               to="/" 
-              className={`text-2xl font-light transition-colors ${textColor}`}
+              className={`text-2xl font-light transition-colors ${textColor} cursor-pointer`}
             >
               HOTLINE
             </Link>
@@ -44,31 +44,31 @@ const Header = ({ isTransparent = false }: HeaderProps) => {
           <nav className="flex space-x-8">
             <Link 
               to="/" 
-              className={`font-light hover:opacity-75 transition-all ${textColor}`}
+              className={`font-light hover:opacity-75 transition-all ${textColor} cursor-pointer`}
             >
               Home
             </Link>
             <Link 
               to="/post" 
-              className={`font-light hover:opacity-75 transition-all ${textColor}`}
+              className={`font-light hover:opacity-75 transition-all ${textColor} cursor-pointer`}
             >
               Post
             </Link>
             <Link 
-              to="/listings" 
-              className={`font-light hover:opacity-75 transition-all ${textColor}`}
+              to="/search" 
+              className={`font-light hover:opacity-75 transition-all ${textColor} cursor-pointer`}
             >
               Browse Services
             </Link>
             <Link 
               to="/post" 
-              className={`font-light hover:opacity-75 transition-all ${textColor}`}
+              className={`font-light hover:opacity-75 transition-all ${textColor} cursor-pointer`}
             >
               Become a Hotliner
             </Link>
             <Link 
               to="/login" 
-              className={`font-light hover:opacity-75 transition-all ${textColor}`}
+              className={`font-light hover:opacity-75 transition-all ${textColor} cursor-pointer`}
             >
               Log in
             </Link>

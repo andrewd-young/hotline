@@ -9,12 +9,14 @@ import useListings from './hooks/useListings'
 import { motion } from 'framer-motion'
 import Login from './pages/Login'
 import Signup from './pages/Signup'
+import Explore from './pages/Explore.tsx'
+import Search from './pages/Search'
 
 const App = () => {
   const { recentListings, loading } = useListings()
 
   return (
-    <div className="min-h-screen bg-[#f5f5f1]">
+    <div className="min-h-screen bg-[#D7DOC4]">
       <Routes>
         <Route path="/" element={
           <>
@@ -141,6 +143,17 @@ const App = () => {
             <Header />
             <Signup />
           </>
+        } />
+        <Route path="/explore" element={
+          <>
+            <Header />
+            <div className="pt-20">
+              <Explore />
+            </div>
+          </>
+        } />
+        <Route path="/search" element={
+          <Search />
         } />
       </Routes>
     </div>
