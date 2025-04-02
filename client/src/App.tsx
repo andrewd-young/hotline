@@ -1,7 +1,6 @@
-import OpeningImage from './assets/images/3.jpeg'
 import ListingCard from './components/ListingCard'
 import Header from './components/Header'
-import { Routes, Route, Link } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 import Post from './pages/Post.tsx'
 import Offering from './pages/Offering.tsx'
 import Listings from './pages/Listings.tsx'
@@ -11,6 +10,7 @@ import Login from './pages/Login'
 import Signup from './pages/Signup'
 import Explore from './pages/Explore.tsx'
 import Search from './pages/Search'
+import Hero from './components/Hero'
 
 const App = () => {
   const { recentListings, loading } = useListings()
@@ -22,46 +22,8 @@ const App = () => {
           <>
             <Header isTransparent={true} />
             <div className="flex flex-col">
-              {/* Hero Section */}
-              <section className="h-screen relative bg-black">
-                <div className="absolute inset-0 bg-gradient-to-b from-black/50 to-transparent z-10" />
-                <motion.div 
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8 }}
-                  className="absolute inset-0 flex flex-col items-center justify-center text-white z-20"
-                >
-                  <Link 
-                    to="/listings"
-                    className="text-7xl md:text-9xl font-light mb-12 text-center hover:opacity-80 transition-opacity"
-                  >
-                    <button className="px-12 py-6 bg-white text-black text-5xl md:text-7xl hover:bg-gray-200 transition-colors cursor-pointer">
-                      Glow Up Today
-                    </button>
-                  </Link>
-                  <div className="flex flex-col items-center gap-8 mt-8">
-                    <div className="text-center">
-                      <h2 className="text-xl md:text-2xl font-light mb-4">
-                        Want To Offer Your Beauty Services?
-                      </h2>
-                      <div className="flex flex-col items-center gap-2">
-                        <span className="text-lg md:text-xl">
-                          <Link to="/signup" className="text-white/80 hover:text-white underline transition-colors">
-                            Become a Hotliner
-                          </Link>
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </motion.div>
-                <div className="absolute inset-0 z-0">
-                  <img 
-                    src={OpeningImage}
-                    alt="Hero" 
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              </section>
+              {/* Replace old hero section with new component */}
+              <Hero />
 
               {/* Mission Statement Section */}
               <section className="bg-white py-24">

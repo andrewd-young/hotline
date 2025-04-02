@@ -46,6 +46,12 @@ const Search = () => {
     setSelectedTags(selectedTags.filter(tag => tag !== tagToRemove))
   }
 
+  const handleSearchInput = () => {
+    if (searchQuery) {
+      handleSearch(searchQuery);
+    }
+  }
+
   return (
     <div className="h-screen relative overflow-hidden">
       {/* Background Image */}
@@ -99,14 +105,14 @@ const Search = () => {
                       type="text"
                       value={searchQuery}
                       onChange={(e) => filterSuggestions(e.target.value)}
+                      onKeyDown={(e) => e.key === 'Enter' && handleSearchInput()}
                       placeholder="Find Your Service"
                       className="flex-1 py-4 focus:outline-none bg-transparent"
                     />
                   </div>
-                  <FontAwesomeIcon 
-                    icon={faSearch} 
-                    className="px-4 py-4 text-gray-400"
-                  />
+                  <button onClick={handleSearchInput} className="px-4 py-4 text-black hover:text-gray-600 cursor-pointer">
+                    <FontAwesomeIcon icon={faSearch} />
+                  </button>
                 </div>
               </div>
 
@@ -124,10 +130,10 @@ const Search = () => {
                         addTag(suggestion.query)
                         handleSearch(suggestion.query, suggestion.category)
                       }}
-                      className="w-full px-4 py-3 text-left hover:bg-gray-100 transition-colors flex justify-between items-center"
+                      className="w-full px-4 py-3 text-left hover:bg-gray-200 cursor-pointer flex justify-between items-center"
                     >
-                      <span>{suggestion.query}</span>
-                      <span className="text-sm text-gray-500">{suggestion.category}</span>
+                      <span className="text-gray-800">{suggestion.query}</span>
+                      <span className="text-sm text-gray-400 ml-2">{suggestion.category}</span>
                     </button>
                   ))}
                 </motion.div>
