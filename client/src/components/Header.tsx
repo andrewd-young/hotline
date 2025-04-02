@@ -49,16 +49,10 @@ const Header = ({ isTransparent = false }: HeaderProps) => {
               Home
             </Link>
             <Link 
-              to="/post" 
+              to="/explore" 
               className={`font-light hover:opacity-75 transition-all ${textColor} cursor-pointer`}
             >
-              Post
-            </Link>
-            <Link 
-              to="/search" 
-              className={`font-light hover:opacity-75 transition-all ${textColor} cursor-pointer`}
-            >
-              Browse Services
+              Explore
             </Link>
             <Link 
               to="/post" 

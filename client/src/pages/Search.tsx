@@ -81,7 +81,7 @@ const Search = () => {
                 <div className="flex items-center border-b border-gray-200">
                   <button 
                     onClick={() => navigate(-1)}
-                    className="px-4 py-4 hover:text-gray-600 transition-colors"
+                    className="px-4 py-4 text-gray-800 hover:text-black transition-colors duration-200 cursor-pointer"
                   >
                     <FontAwesomeIcon icon={faArrowLeft} />
                   </button>
@@ -90,12 +90,12 @@ const Search = () => {
                     {selectedTags.map((tag, index) => (
                       <div 
                         key={index}
-                        className="flex items-center gap-1 bg-gray-200 px-2 py-1 text-sm"
+                        className="flex items-center gap-1 bg-gray-200 px-2 py-1 text-sm group"
                       >
                         <span>{tag}</span>
                         <button
                           onClick={() => removeTag(tag)}
-                          className="hover:text-gray-600"
+                          className="text-gray-500 hover:text-black transition-colors duration-200"
                         >
                           <FontAwesomeIcon icon={faTimes} className="text-xs" />
                         </button>
@@ -110,7 +110,10 @@ const Search = () => {
                       className="flex-1 py-4 focus:outline-none bg-transparent"
                     />
                   </div>
-                  <button onClick={handleSearchInput} className="px-4 py-4 text-black hover:text-gray-600 cursor-pointer">
+                  <button 
+                    onClick={handleSearchInput} 
+                    className="px-4 py-4 text-gray-800 hover:text-black transition-colors duration-200 cursor-pointer"
+                  >
                     <FontAwesomeIcon icon={faSearch} />
                   </button>
                 </div>
@@ -130,7 +133,7 @@ const Search = () => {
                         addTag(suggestion.query)
                         handleSearch(suggestion.query, suggestion.category)
                       }}
-                      className="w-full px-4 py-3 text-left hover:bg-gray-200 cursor-pointer flex justify-between items-center"
+                      className="w-full px-4 py-3 text-left hover:bg-black/5 transition-colors duration-200 cursor-pointer flex justify-between items-center"
                     >
                       <span className="text-gray-800">{suggestion.query}</span>
                       <span className="text-sm text-gray-400 ml-2">{suggestion.category}</span>
