@@ -18,6 +18,7 @@ export interface Hotliner {
     date: string;
     image?: string;
   }[];
+  email: string;
 }
 
 export const hotliners: Hotliner[] = [
@@ -46,7 +47,8 @@ export const hotliners: Hotliner[] = [
         date: '2024-02-15',
         image: 'https://images.unsplash.com/photo-1515377905703-c4788e51af15'
       }
-    ]
+    ],
+    email: 'sarah.johnson@northeastern.edu'
   },
   {
     id: '2',
@@ -71,6 +73,7 @@ export const hotliners: Hotliner[] = [
         author: 'Sophie M.',
         date: '2024-02-10',
       }
-    ]
+    ],
+    email: 'emily.davis@northeastern.edu'
   }
 ]; 

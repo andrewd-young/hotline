@@ -1,6 +1,5 @@
 import Header from './components/Header'
 import { Routes, Route, useNavigate } from 'react-router-dom'
-import Post from './pages/Post.tsx'
 import Offering from './pages/Offering.tsx'
 import Login from './pages/Login'
 import Signup from './pages/Signup'
@@ -10,7 +9,8 @@ import Hero from './components/Hero'
 import { motion } from 'framer-motion'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar as farStar } from '@fortawesome/free-regular-svg-icons'
-import Profile from './pages/Profile'
+import CustomerProfile from './components/CustomerProfile'
+import SellerProfile from './components/SellerProfile'
 import { hotliners } from './data/sampleData'
 
 const App = () => {
@@ -56,7 +56,7 @@ const App = () => {
                       >
                         <div 
                           className="aspect-square cursor-pointer" 
-                          onClick={() => navigate(`/profile/${hotliner.id}`)}
+                          onClick={() => navigate(`/seller/${hotliner.id}`)}
                         >
                           <img
                             src={hotliner.imageUrl}
@@ -74,7 +74,7 @@ const App = () => {
                           <p className="text-gray-600 text-sm mt-1">{hotliner.location}</p>
                           <div className="flex justify-between items-center mt-4">
                             <span className="font-semibold">${hotliner.price}</span>
-                            <button onClick={() => navigate(`/profile/${hotliner.id}`)} className="px-4 py-2 bg-gray-200 text-black rounded-none hover:bg-gray-300 cursor-pointer">
+                            <button onClick={() => navigate(`/seller/${hotliner.id}`)} className="px-4 py-2 bg-gray-200 text-black rounded-none hover:bg-gray-300 cursor-pointer">
                               Book Now
                             </button>
                           </div>
@@ -84,14 +84,6 @@ const App = () => {
                   </div>
                 </div>
               </section>
-            </div>
-          </>
-        } />
-        <Route path="/post" element={
-          <>
-            <Header />
-            <div className="pt-20">
-              <Post />
             </div>
           </>
         } />
@@ -126,11 +118,19 @@ const App = () => {
         <Route path="/search" element={
           <Search />
         } />
-        <Route path="/profile/:id" element={
+        <Route path="/customer/:id" element={
           <>
             <Header />
             <div className="pt-20">
-              <Profile />
+              <CustomerProfile />
+            </div>
+          </>
+        } />
+        <Route path="/seller/:id" element={
+          <>
+            <Header />
+            <div className="pt-20">
+              <SellerProfile />
             </div>
           </>
         } />

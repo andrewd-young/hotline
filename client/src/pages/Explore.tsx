@@ -87,7 +87,7 @@ const Explore = () => {
             >
               <div 
                 className="aspect-square cursor-pointer" 
-                onClick={() => navigate(`/profile/${hotliner.id}`)}
+                onClick={() => navigate(`/seller/${hotliner.id}`)}
               >
                 <img
                   src={hotliner.imageUrl}
@@ -96,7 +96,7 @@ const Explore = () => {
                 />
               </div>
               <div className="p-4">
-                <h3 className="font-semibold text-lg cursor-pointer" onClick={() => navigate(`/profile/${hotliner.id}`)}>
+                <h3 className="font-semibold text-lg cursor-pointer" onClick={() => navigate(`/seller/${hotliner.id}`)}>
                   {hotliner.name}
                 </h3>
                 <p className="text-gray-600 text-sm">{hotliner.category}</p>
@@ -108,7 +108,7 @@ const Explore = () => {
                 <div className="flex justify-between items-center mt-4">
                   <span className="font-semibold">${hotliner.price}</span>
                   <button 
-                    onClick={() => navigate(`/profile/${hotliner.id}`)}
+                    onClick={() => navigate(`/seller/${hotliner.id}`)}
                     className="px-4 py-2 bg-gray-200 text-black rounded-none hover:bg-gray-300 cursor-pointer"
                   >
                     Book Now

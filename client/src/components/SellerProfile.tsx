@@ -1,15 +1,15 @@
-import { useParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar as farStar } from '@fortawesome/free-regular-svg-icons';
 import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
+import ReviewsSection from './ReviewsSection';
+import { useParams } from 'react-router-dom';
 import { hotliners } from '../data/sampleData';
 
-const Profile = () => {
+const SellerProfile = () => {
   const { id } = useParams();
-  
   const profileData = hotliners.find(h => h.id === id);
-  
+
   if (!profileData) {
     return <div className="text-center py-12">Profile not found</div>;
   }
@@ -44,8 +44,11 @@ const Profile = () => {
           </button>
         </div>
       </div>
+
+      {/* Reviews Section */}
+      <ReviewsSection />
     </div>
   );
 };
 
-export default Profile; 
+export default SellerProfile; 

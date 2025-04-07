@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom'
 import { useState, useEffect } from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faUserCircle } from '@fortawesome/free-solid-svg-icons'
 
 interface HeaderProps {
   isTransparent?: boolean
@@ -7,6 +9,7 @@ interface HeaderProps {
 
 const Header = ({ isTransparent = false }: HeaderProps) => {
   const [scrolled, setScrolled] = useState(false)
+  const [isLoggedIn, setIsLoggedIn] = useState(true)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -55,7 +58,7 @@ const Header = ({ isTransparent = false }: HeaderProps) => {
               Explore
             </Link>
             <Link 
-              to="/post" 
+              to="/signup" 
               className={`font-light hover:opacity-75 transition-all ${textColor} cursor-pointer`}
             >
               Become a Hotliner
@@ -66,6 +69,14 @@ const Header = ({ isTransparent = false }: HeaderProps) => {
             >
               Log in
             </Link>
+            {isLoggedIn && (
+              <Link 
+                to={`/customer/${1}`}
+                className={`font-light hover:opacity-75 transition-all ${textColor} cursor-pointer`}
+              >
+                <FontAwesomeIcon icon={faUserCircle} className="text-2xl" />
+              </Link>
+            )}
           </nav>
         </div>
       </div>
