@@ -145,7 +145,7 @@ const Signup = () => {
             </div>
 
             {formData.isServiceProvider && (
-              <div className="space-y-4 bg-gray-100 p-6 rounded-md">
+              <div className="space-y-4 bg-gray-100 p-6">
                 <h3 className="text-lg font-medium text-gray-700">
                   New Service Listings
                 </h3>

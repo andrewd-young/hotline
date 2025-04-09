@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar as farStar } from '@fortawesome/free-regular-svg-icons';
 import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
 import ReviewsSection from './ReviewsSection';
+import ServicesOffered from './ServicesOffered';
 import { useParams } from 'react-router-dom';
 import { hotliners } from '../data/sampleData';
 
@@ -13,6 +14,8 @@ const SellerProfile = () => {
   if (!profileData) {
     return <div className="text-center py-12">Profile not found</div>;
   }
+
+  const services = profileData.services || [];
 
   return (
     <div className="max-w-[1400px] mx-auto px-8 py-12">
@@ -44,6 +47,9 @@ const SellerProfile = () => {
           </button>
         </div>
       </div>
+
+      {/* Services Section */}
+      <ServicesOffered services={services} /> {/* Use the new component */}
 
       {/* Reviews Section */}
       <ReviewsSection />

@@ -18,7 +18,7 @@ const CustomerProfile = () => {
         <img 
           src={profileData.imageUrl} 
           alt={profileData.name} 
-          className="w-32 h-32 rounded-full object-cover mr-6"
+          className="w-32 h-32 object-cover mr-6"
         />
         <div>
           <h1 className="text-3xl font-semibold">{profileData.name}</h1>
@@ -31,7 +31,7 @@ const CustomerProfile = () => {
         <div className="space-y-12">
           <BookingsSection />
         </div>
-        <div className="space-y-12">
+        <div className="space-y-12 p-4">
           <LoyaltySection />
         </div>
       </div>

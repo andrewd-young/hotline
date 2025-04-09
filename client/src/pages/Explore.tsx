@@ -7,9 +7,16 @@ import { useLocation, useNavigate } from 'react-router-dom'
 import { hotliners } from '../data/sampleData'
 
 const categories = [
-  'Featured', 'Nails', 'Hair', 'Eyebrows/Lashes', 
-  'Hair Removal', 'Makeup', 'Piercings', 'Tattoos', 
-  'Braiding', 'Clothing'
+  { name: 'Featured', subcategories: [] },
+  { name: 'Nails', subcategories: ['Manicure', 'Pedicure', 'Nail Art'] },
+  { name: 'Hair', subcategories: ['Cut', 'Color', 'Styling'] },
+  { name: 'Eyebrows/Lashes', subcategories: ['Eyebrow Shaping', 'Lash Extensions'] },
+  { name: 'Hair Removal', subcategories: ['Waxing', 'Threading'] },
+  { name: 'Makeup', subcategories: ['Bridal', 'Event', 'Makeup Lessons'] },
+  { name: 'Piercings', subcategories: ['Ears', 'Nose', 'Body'] },
+  { name: 'Tattoos', subcategories: ['Custom', 'Flash'] },
+  { name: 'Braiding', subcategories: ['Box Braids', 'Cornrows'] },
+  { name: 'Clothing', subcategories: [] },
 ]
 
 const Explore = () => {
@@ -22,6 +29,7 @@ const Explore = () => {
     location.state?.searchQuery || ''
   )
   const [showFilters, setShowFilters] = useState(false)
+  const [expandedCategory, setExpandedCategory] = useState<string | null>(null)
   
   useEffect(() => {
     if (location.state?.category) {
@@ -42,7 +50,7 @@ const Explore = () => {
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            placeholder="Search services or providers..."
+            placeholder="Search services or members..."
             className="w-full pl-10 pr-4 py-2 border rounded-none focus:outline-none focus:ring-2 focus:ring-gray-500"
           />
         </div>
@@ -55,21 +63,45 @@ const Explore = () => {
         </button>
       </div>
 
-      {/* Categories */}
-      <div className="mb-8 overflow-x-auto">
-        <div className="flex gap-4 pb-2">
+      {/* Categories Horizontal Scroll */}
+      <div className="relative mb-8">
+        <div className="flex overflow-x-auto space-x-4 pb-2">
           {categories.map((category) => (
-            <button
-              key={category}
-              onClick={() => setSelectedCategory(category)}
-              className={`px-4 py-2 rounded-none whitespace-nowrap cursor-pointer ${
-                selectedCategory === category
-                  ? 'bg-gray-200 text-black'
-                  : 'bg-gray-100 hover:bg-gray-200'
-              }`}
-            >
-              {category}
-            </button>
+            <div key={category.name} className="relative">
+              <button
+                onClick={() => {
+                  setSelectedCategory(category.name);
+                  setExpandedCategory(expandedCategory === category.name ? null : category.name);
+                }}
+                className={`px-4 py-2 rounded-none whitespace-nowrap cursor-pointer transition-all duration-200 ${
+                  selectedCategory === category.name
+                    ? 'bg-black text-white'
+                    : 'bg-gray-100 hover:bg-gray-200'
+                }`}
+              >
+                {category.name}
+              </button>
+
+              {/* Subcategory Dropdown */}
+              {expandedCategory === category.name && category.subcategories.length > 0 && (
+                <div className="absolute left-0 top-full mt-2 z-10 bg-white border rounded-none shadow-md min-w-[12rem] w-max whitespace-nowrap">
+                  {category.subcategories.map((subcategory) => (
+                    <button
+                      key={subcategory}
+                      onClick={() => {
+                        setSelectedCategory(subcategory);
+                        setExpandedCategory(null);
+                      }}
+                      className={`block w-full text-left px-4 py-2 cursor-pointer transition hover:bg-gray-100 ${
+                        selectedCategory === subcategory ? 'bg-gray-200' : ''
+                      }`}
+                    >
+                      {subcategory}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
           ))}
         </div>
       </div>

@@ -21,7 +21,7 @@ const BookingsSection = () => {
         {upcomingBookings.map(booking => (
           <div
             key={booking.id}
-            className="p-4 rounded-2xl border border-gray-200 shadow-sm hover:shadow-md transition"
+            className="p-4 border border-gray-200 shadow-sm hover:shadow-md transition"
           >
             <h5 className="text-lg font-medium">{booking.service}</h5>
             <p className="text-gray-600 mt-1">{booking.date}</p>

@@ -1,3 +1,10 @@
+export interface Service {
+  name: string;
+  price: number;
+  description?: string;
+  images?: string[];
+}
+
 export interface Hotliner {
   id: string;
   name: string;
@@ -19,6 +26,7 @@ export interface Hotliner {
     image?: string;
   }[];
   email: string;
+  services?: Service[]; // Added services property
 }
 
 export const hotliners: Hotliner[] = [
@@ -46,9 +54,59 @@ export const hotliners: Hotliner[] = [
         author: 'Emily R.',
         date: '2024-02-15',
         image: 'https://images.unsplash.com/photo-1515377905703-c4788e51af15'
-      }
+      },
+      {
+        id: '2',
+        rating: 4,
+        text: 'Great service!',
+        author: 'John D.',
+        date: '2024-02-16',
+      },
+      {
+        id: '3',
+        rating: 4,
+        text: 'Very satisfied with my haircut.',
+        author: 'Alice S.',
+        date: '2024-02-17',
+      },
+      {
+        id: '4',
+        rating: 5,
+        text: 'Loved the styling and vibe.',
+        author: 'Mark T.',
+        date: '2024-02-18',
+      },
     ],
-    email: 'sarah.johnson@northeastern.edu'
+    email: 'sarah.johnson@northeastern.edu',
+    services: [
+      {
+        name: 'Haircut',
+        price: 30,
+        description: 'Custom cuts for all hair types with shaping, trimming, and personal consultation.',
+        images: [
+          'https://images.unsplash.com/photo-1605497788044-5a32c7078486',
+          'https://images.unsplash.com/photo-1492106087820-71f1a00d2b11',
+        ]
+      },
+      {
+        name: 'Coloring',
+        price: 50,
+        description: 'Vibrant coloring options including balayage, highlights, and full head dye.',
+        images: [
+          'https://images.unsplash.com/photo-1560869713-da86a9ec0744',
+          'https://images.unsplash.com/photo-1597462265018-9ec3a67b9efb',
+        ]
+      },
+      {
+        name: 'Styling',
+        price: 40,
+        description: 'Event-ready styles, blowouts, and custom looks for every hair type.',
+        images: [
+          'https://images.unsplash.com/photo-1504198458649-3128b932f49b',
+          'https://images.unsplash.com/photo-1603386329225-868f8590b5b6',
+        ]
+      }
+    ]
   },
   {
     id: '2',
@@ -74,6 +132,35 @@ export const hotliners: Hotliner[] = [
         date: '2024-02-10',
       }
     ],
-    email: 'emily.davis@northeastern.edu'
+    email: 'emily.davis@northeastern.edu',
+    services: [
+      {
+        name: 'Haircut',
+        price: 30,
+        description: 'Custom cuts for all hair types with shaping, trimming, and personal consultation.',
+        images: [
+          'https://images.unsplash.com/photo-1605497788044-5a32c7078486',
+          'https://images.unsplash.com/photo-1492106087820-71f1a00d2b11',
+        ]
+      },
+      {
+        name: 'Coloring',
+        price: 50,
+        description: 'Vibrant coloring options including balayage, highlights, and full head dye.',
+        images: [
+          'https://images.unsplash.com/photo-1560869713-da86a9ec0744',
+          'https://images.unsplash.com/photo-1597462265018-9ec3a67b9efb',
+        ]
+      },
+      {
+        name: 'Styling',
+        price: 40,
+        description: 'Event-ready styles, blowouts, and custom looks for every hair type.',
+        images: [
+          'https://images.unsplash.com/photo-1504198458649-3128b932f49b',
+          'https://images.unsplash.com/photo-1603386329225-868f8590b5b6',
+        ]
+      }
+    ]
   }
 ]; 

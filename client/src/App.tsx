@@ -1,4 +1,5 @@
 import Header from './components/Header'
+import Footer from './components/Footer'
 import { Routes, Route, useNavigate } from 'react-router-dom'
 import Offering from './pages/Offering.tsx'
 import Login from './pages/Login'
@@ -85,6 +86,7 @@ const App = () => {
                 </div>
               </section>
             </div>
+            <Footer />
           </>
         } />
         <Route path="/offering/:id" element={
@@ -93,18 +95,21 @@ const App = () => {
             <div className="pt-20">
               <Offering />
             </div>
+            <Footer />
           </>
         } />
         <Route path="/login" element={
           <>
             <Header />
             <Login />
+            <Footer />
           </>
         } />
         <Route path="/signup" element={
           <>
             <Header />
             <Signup />
+            <Footer />
           </>
         } />
         <Route path="/explore" element={
@@ -113,10 +118,15 @@ const App = () => {
             <div className="pt-20">
               <Explore />
             </div>
+            <Footer />
           </>
         } />
         <Route path="/search" element={
-          <Search />
+          <>
+            <Header />
+            <Search />
+            <Footer />
+          </>
         } />
         <Route path="/customer/:id" element={
           <>
@@ -124,6 +134,7 @@ const App = () => {
             <div className="pt-20">
               <CustomerProfile />
             </div>
+            <Footer />
           </>
         } />
         <Route path="/seller/:id" element={
@@ -132,6 +143,7 @@ const App = () => {
             <div className="pt-20">
               <SellerProfile />
             </div>
+            <Footer />
           </>
         } />
       </Routes>

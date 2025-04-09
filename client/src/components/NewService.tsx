@@ -1,6 +1,4 @@
 import React, { useState, useRef } from 'react'
-import { addDoc, collection } from 'firebase/firestore'
-import { db } from '../config/firebase'
 
 interface NewServiceProps {
   serviceType: string
@@ -35,21 +33,6 @@ const NewService: React.FC<NewServiceProps> = ({ serviceType }) => {
 
   const removeImage = (index: number) => {
     setSelectedImages((prev) => prev.filter((_, i) => i !== index))
-  }
-
-  const handlePost = async () => {
-    const listingRef = collection(db, 'listings')
-    await addDoc(listingRef, {
-      providerName,
-      serviceTitle,
-      about,
-      price,
-      location,
-      images: selectedImages,
-      timestamp: new Date().toISOString(),
-      serviceType
-    })
-    // Optionally reset fields or show a success message
   }
 
   return (
@@ -132,7 +115,7 @@ const NewService: React.FC<NewServiceProps> = ({ serviceType }) => {
         onChange={(e) => setProviderName(e.target.value)}
         placeholder="e.g. Jane Doe"
         className="w-full px-3 py-3 border border-gray-300 placeholder-gray-500 
-                   text-gray-900 focus:outline-none focus:ring-black focus:border-black bg-gray-50 my-3"
+                   text-gray-900 focus:outline-none focus:ring-black focus:border-black bg-gray-50 my-4 sm:text-sm" // Added sm:text-sm
       />
 
       <div>Service Title</div>
@@ -142,16 +125,16 @@ const NewService: React.FC<NewServiceProps> = ({ serviceType }) => {
         onChange={(e) => setServiceTitle(e.target.value)}
         placeholder="e.g. 'Professional Makeup for Events'"
         className="w-full px-3 py-3 border border-gray-300 placeholder-gray-500 
-                   text-gray-900 focus:outline-none focus:ring-black focus:border-black bg-gray-50 my-3"
+                   text-gray-900 focus:outline-none focus:ring-black focus:border-black bg-gray-50 my-4 sm:text-sm" // Added sm:text-sm
       />
 
       <div>About (Description)</div>
       <textarea
         value={about}
         onChange={(e) => setAbout(e.target.value)}
-        placeholder="Insert example description (e.g. 'I have 5 years of experience...')"
+        placeholder="Describe your services, experience, and what makes you unique. For example: 'I have over 5 years of experience in makeup artistry...'"
         className="w-full px-3 py-3 border border-gray-300 placeholder-gray-500 
-                   text-gray-900 focus:outline-none focus:ring-black focus:border-black bg-gray-50 my-3"
+                   text-gray-900 focus:outline-none focus:ring-black focus:border-black bg-gray-50 my-4 sm:text-sm" // Updated placeholder text
       />
 
       <div>Price</div>
@@ -161,7 +144,7 @@ const NewService: React.FC<NewServiceProps> = ({ serviceType }) => {
         onChange={(e) => setPrice(e.target.value)}
         placeholder="e.g. $50"
         className="w-full px-3 py-3 border border-gray-300 placeholder-gray-500 
-                   text-gray-900 focus:outline-none focus:ring-black focus:border-black bg-gray-50 my-3"
+                   text-gray-900 focus:outline-none focus:ring-black focus:border-black bg-gray-50 my-4 sm:text-sm" // Added sm:text-sm
       />
 
       <div>Location</div>
@@ -171,15 +154,8 @@ const NewService: React.FC<NewServiceProps> = ({ serviceType }) => {
         onChange={(e) => setLocation(e.target.value)}
         placeholder="Enter listing location, e.g. 'NYC'"
         className="w-full px-3 py-3 border border-gray-300 placeholder-gray-500 
-                   text-gray-900 focus:outline-none focus:ring-black focus:border-black bg-gray-50 my-3"
+                   text-gray-900 focus:outline-none focus:ring-black focus:border-black bg-gray-50 my-4 sm:text-sm" // Added sm:text-sm
       />
-
-      <button
-        onClick={handlePost}
-        className="bg-blue-500 text-white px-4 py-2 rounded-md"
-      >
-        Post
-      </button>
     </div>
   )
 }
