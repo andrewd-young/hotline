@@ -40,7 +40,7 @@ export const hotliners: Hotliner[] = [
     location: 'Northeastern University',
     distance: '0.5 miles away',
     price: 45,
-    bio: 'Passionate hair stylist with 3 years of experience. Specializing in creative coloring and modern cuts. Making everyone feel beautiful is my mission!',
+    bio: "Hello! I'm a third-year student at Northeastern University with a passion for hair styling. I started doing hair when I was 15 and have been perfecting my craft ever since. I specialize in creative coloring, modern cuts, and styling for special events. I believe everyone deserves to feel confident and beautiful, and I love being part of that transformation journey!",
     workImages: [
       'https://images.unsplash.com/photo-1605497788044-5a32c7078486',
       'https://images.unsplash.com/photo-1492106087820-71f1a00d2b11',
@@ -118,7 +118,7 @@ export const hotliners: Hotliner[] = [
     location: 'Northeastern University',
     distance: '0.8 miles away',
     price: 30,
-    bio: 'Certified nail technician specializing in artistic designs and nail health. Making your hands and feet look their best!',
+    bio: "Hi there! As a certified nail technician and current Northeastern student, I bring both technical expertise and creative flair to every appointment. I started my nail art journey 5 years ago and have developed a unique style that combines classic techniques with modern trends. I'm particularly known for my detailed hand-painted designs and long-lasting applications.",
     workImages: [
       'https://images.unsplash.com/photo-1610992015732-2449b0dd2b3f',
       'https://images.unsplash.com/photo-1610992015904-e5b3c7ad8d27',

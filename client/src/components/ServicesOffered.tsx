@@ -36,8 +36,7 @@ const ServicesOffered: React.FC<ServicesOfferedProps> = ({ services }) => {
   };
 
   return (
-    <div className="mt-12 mb-12">
-      <h3 className="text-4xl font-bold mb-6">Services</h3>
+    <div className="mb-12">
       <div className="space-y-6">
         {services.map((service, index) => (
           <div
