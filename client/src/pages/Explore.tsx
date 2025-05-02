@@ -129,9 +129,9 @@ const Explore = () => {
               </div>
               <div className="p-4">
                 <h3 className="font-semibold text-lg cursor-pointer" onClick={() => navigate(`/seller/${hotliner.id}`)}>
-                  {hotliner.name}
+                  {hotliner.category}
                 </h3>
-                <p className="text-gray-600 text-sm">{hotliner.category}</p>
+                <p className="text-gray-600 text-sm">{hotliner.name}</p>
                 <div className="flex items-center gap-1 mt-1">
                   <FontAwesomeIcon icon={farStar} className="text-yellow-400" />
                   <span className="text-sm">{hotliner.rating}</span>

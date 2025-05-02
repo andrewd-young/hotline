@@ -6,10 +6,15 @@ import ReviewsSection from './ReviewsSection';
 import ServicesOffered from './ServicesOffered';
 import { useParams } from 'react-router-dom';
 import { hotliners } from '../data/sampleData';
+import { useEffect } from 'react';
 
 const SellerProfile = () => {
   const { id } = useParams();
   const profileData = hotliners.find(h => h.id === id);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [id]);
 
   if (!profileData) {
     return <div className="text-center py-12">Profile not found</div>;
