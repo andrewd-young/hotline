@@ -11,11 +11,7 @@ const categories = [
   { name: 'Nails', subcategories: ['Manicure', 'Pedicure', 'Nail Art'] },
   { name: 'Hair', subcategories: ['Cut', 'Color', 'Styling'] },
   { name: 'Eyebrows/Lashes', subcategories: ['Eyebrow Shaping', 'Lash Extensions'] },
-  { name: 'Hair Removal', subcategories: ['Waxing', 'Threading'] },
   { name: 'Makeup', subcategories: ['Bridal', 'Event', 'Makeup Lessons'] },
-  { name: 'Piercings', subcategories: ['Ears', 'Nose', 'Body'] },
-  { name: 'Tattoos', subcategories: ['Custom', 'Flash'] },
-  { name: 'Braiding', subcategories: ['Box Braids', 'Cornrows'] },
   { name: 'Clothing', subcategories: [] },
 ]
 
